@@ -1,6 +1,6 @@
 // Starter file provided by Instructor (03/09/2021) AC
 
-const Intern = require("../lib/Intern");
+const Intern = require("./lib/Intern");
 
 test("Can set school via constructor", () => {
     const testValue ="UNCC";
@@ -10,7 +10,7 @@ test("Can set school via constructor", () => {
 
 test("getRole() should return \"Intern\"", () => {
     const testValue ="Intern";
-    const e= new Intern("Foo",1,"test@test.com","UNCC");
+    const e = new Intern("Foo",1,"test@test.com","UNCC");
     expect(e.getRole()).toBe(testValue);
     
 });

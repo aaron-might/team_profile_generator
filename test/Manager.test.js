@@ -1,7 +1,7 @@
 // Starter file provided by Instructor (03/09/2021) AC
 
-const Manager = require("../lib/Manager");
-const Employee = require("../lib/Employee");
+const Manager = require("./lib/Manager");
+const Employee = require("./lib/Employee");
 
 test("Can set office number via constructor argument", () => {
     const testValue =100;
