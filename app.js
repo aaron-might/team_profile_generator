@@ -8,7 +8,7 @@ const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
 
-const employee= [];
+const employees = [];
 function initApp() {
     startHtml();
     addMember();
@@ -34,13 +34,13 @@ function addMember() {
     },
     {
         message:"Enter team member's email address",
-        name:"id",
+        name: "email",
     }])
     .then(function ({name, role, id, email}){
         let roleInfo = "";
         if (role==="Engineer"){
             roleInfo = "GitHub username";
-        } else if (role==="Intern"){
+        } else if (role ==="Intern"){
             roleInfo = "school name";
         } else {
             roleInfo = "office phone number";
@@ -65,7 +65,7 @@ function addMember() {
             } else if (role ==="Intern"){
                 newMember = new Intern(name, id, email,roleInfo);
             } else {
-                newMember = newManager(name, id, email,roleInfo);
+                newMember = new Manager(name, id, email,roleInfo);
             }
             employees.push(newMember);
             addHtml(newMember)
@@ -97,7 +97,7 @@ function startHtml() {
         </nav>
         <div class="container">
             <div class="row">`;
-    fs.writeFile("./output/team.html", html, function(err) {
+    fs.writeFile("./templates/main.html", html, function(err) {
         if (err) {
             console.log(err);
         }
@@ -150,7 +150,7 @@ function addHtml(member) {
         </div>`
         }
         console.log("adding team member");
-        fs.appendFile("./output/team.html", data, function (err) {
+        fs.appendFile("./templates/main.html", data, function (err) {
             if (err) {
                 return reject(err);
             };
@@ -166,7 +166,7 @@ function finishHtml() {
 </body>
 </html>`;
 
-    fs.appendFile("./output/team.html", html, function (err) {
+    fs.appendFile("./templates/main.html", html, function (err) {
         if (err) {
             console.log(err);
         };
@@ -184,12 +184,11 @@ function finishHtml() {
 // .then(function() {
 // finishHtml();
 // });
+initApp();
+const OUTPUT_DIR = path.resolve(__dirname, "templates");
+const outputPath = path.join(OUTPUT_DIR, "main.html");
 
-// initApp();
-// const OUTPUT_DIR = path.resolve(__dirname, "output");
-// const outputPath = path.join(OUTPUT_DIR, "team.html");
-
-// const render = require("./lib/htmlRenderer");
+const render = require("./lib/htmlRenderer");
 
 // if (!fs.exists)
 
